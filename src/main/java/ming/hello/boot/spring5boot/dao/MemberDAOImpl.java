@@ -2,8 +2,8 @@ package ming.hello.boot.spring5boot.dao;
 
 import lombok.RequiredArgsConstructor;
 import ming.hello.boot.spring5boot.model.Member;
+import ming.hello.boot.spring5boot.model.Zipcode;
 import ming.hello.boot.spring5boot.mybatis.MemberMapper;
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -17,9 +17,6 @@ public class MemberDAOImpl implements MemberDAO{
     // 단, 생성자 주입 방식 사용!
     @Autowired
     final MemberMapper memberMapper;
-
-    @Autowired
-    private SqlSession sqlSession;
 
     @Override
     public int insertMember(Member m) {
@@ -35,5 +32,11 @@ public class MemberDAOImpl implements MemberDAO{
     public List<Member> selectMember() {
 
         return memberMapper.selectMember();
+    }
+
+    @Override
+    public List<Zipcode> selectzip(String dong) {
+
+        return memberMapper.findZipcode(dong);
     }
 }

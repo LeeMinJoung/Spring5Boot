@@ -109,11 +109,14 @@ email3.addEventListener('click', () => {
     } else if (email3.value !== '선택하세요') {
         frm.email2.readOnly = true;
         frm.email2.value = email3.value;
-    } else {
-
     }
 });
 
+// 우편번호 검색 엔터키 입력 차단
+dong?.addEventListener('keydown', (e) => {
+    if (e.keyCode === 13)       // 엔터키(13)가 입력되면
+        e.preventDefault();     // 이벤트 전파 방지
+});
 
 
 

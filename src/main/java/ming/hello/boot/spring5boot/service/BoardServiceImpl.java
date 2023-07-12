@@ -15,7 +15,10 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public boolean saveBoard(Board b) {
-        return false;
+        boolean isSaved = false;
+        if (bdao.insertBoard(b) > 0) isSaved = true;
+
+        return isSaved;
     }
 
     @Override
@@ -30,4 +33,6 @@ public class BoardServiceImpl implements BoardService {
 
         return bdao.selectOneBoard(bno);
     }
+
+
 }

@@ -2,10 +2,7 @@ package ming.hello.boot.spring5boot.board;
 
 import ming.hello.boot.spring5boot.dao.BoardDAO;
 import ming.hello.boot.spring5boot.dao.BoardDAOImpl;
-import ming.hello.boot.spring5boot.dao.MemberDAO;
-import ming.hello.boot.spring5boot.dao.MemberDAOImpl;
 import ming.hello.boot.spring5boot.model.Board;
-import ming.hello.boot.spring5boot.model.Member;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
@@ -28,7 +25,10 @@ public class BoardDAOUnitTest {
     @Test
     @DisplayName("BoardDAO select Test")
     void selectBoard() {
-        List<Board> results = bdao.selectBoard();
+        int cpg = 1;
+        int stnum = (cpg - 1) * 25;
+
+        List<Board> results = bdao.selectBoard(stnum);
 
         //System.out.println(results);
         assertNotNull(results);

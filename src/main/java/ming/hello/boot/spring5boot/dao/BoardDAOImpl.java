@@ -3,7 +3,6 @@ package ming.hello.boot.spring5boot.dao;
 import lombok.RequiredArgsConstructor;
 import ming.hello.boot.spring5boot.model.Board;
 import ming.hello.boot.spring5boot.mybatis.BoardMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,9 +20,9 @@ public class BoardDAOImpl implements BoardDAO {
     }
 
     @Override
-    public List<Board> selectBoard() {
+    public List<Board> selectBoard(int stnum) {
 
-        return boardMapper.selectBoard();
+        return boardMapper.selectBoard(stnum);
     }
 
     @Override

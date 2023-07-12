@@ -1,4 +1,4 @@
-package ming.hello.boot.spring5boot;
+package ming.hello.boot.spring5boot.member;
 
 import ming.hello.boot.spring5boot.dao.MemberDAO;
 import ming.hello.boot.spring5boot.dao.MemberDAOImpl;
@@ -27,8 +27,8 @@ public class MemberServiceUnitTest {
     @Test
     @DisplayName("MemberService save Test")
     void saveMember() {
-        Member m = new Member(null, "", "", "", "",
-                "", "", "", "", "", null);
+        Member m = new Member(null,"","","",
+                "","","","","","",null);
 
         boolean result = msrv.saveMember(m);
         System.out.println(result);
@@ -42,6 +42,19 @@ public class MemberServiceUnitTest {
 
         System.out.println(results);
         assertNotNull(results);
+    }
+
+    @Test
+    @DisplayName("MemberService readOneMember Test")
+    void readOneMember() {
+        Member m = new Member();
+        m.setUserid("abc123");
+        m.setPasswd("987xyz");
+
+        Member result = msrv.readOneMember(m);
+
+        System.out.println(result);
+        assertNotNull(result);
     }
 
 }

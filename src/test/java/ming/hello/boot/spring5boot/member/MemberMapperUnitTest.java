@@ -1,14 +1,16 @@
-package ming.hello.boot.spring5boot;
+package ming.hello.boot.spring5boot.member;
 
 import ming.hello.boot.spring5boot.dao.MemberDAO;
 import ming.hello.boot.spring5boot.dao.MemberDAOImpl;
 import ming.hello.boot.spring5boot.model.Member;
+import ming.hello.boot.spring5boot.mybatis.MemberMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.context.annotation.Import;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
@@ -17,39 +19,42 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @MybatisTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@Import(MemberDAOImpl.class)
-public class MemberDAOUnitTest {
+public class MemberMapperUnitTest {
 
-    @Autowired private MemberDAO mdao;
+    @Autowired
+    private MemberMapper memberMapper;
 
     @Test
-    @DisplayName("MemberDAO insert Test")
+    @DisplayName("MemberMapper insert Test")
     void insertMember() {
-        Member m = new Member(null, "", "", "", "",
-                "", "", "", "", "", null);
+        Member m = new Member(null,"","","",
+                "","","","","","",null);
 
-        int result = mdao.insertMember(m);
+        int result = memberMapper.insertMember(m);
         System.out.println(result);
         assertEquals(result, 1);
     }
 
     @Test
-    @DisplayName("MemberDAO select Test")
+    @DisplayName("MemberMapper select Test")
     void selectMember() {
-        List<Member> results = mdao.selectMember();
+        List<Member> results = memberMapper.selectMember();
 
         System.out.println(results);
         assertNotNull(results);
     }
 
     @Test
-    @DisplayName("MemberMapper checkUserid Test")
-    void checkUserid() {
-        String uid = "abc123";
-        int result = mdao.selectOneUserid(uid);
+    @DisplayName("MemberMapper selectOneMember Test")
+    void selectOneMember() {
+        Member m = new Member();
+        m.setUserid("abc123");
+        m.setPasswd("987xyz");
+
+        Member result = memberMapper.selectOneMember(m);
 
         System.out.println(result);
-        assertEquals(result, 1);
+        assertNotNull(result);
     }
 
 }

@@ -1,4 +1,4 @@
-package ming.hello.boot.spring5boot;
+package ming.hello.boot.spring5boot.member;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,14 +28,24 @@ public class MemberControllerUnitTest {
     void saveMember() throws Exception {
 
         mvc.perform(post("/join/joinme")
-                .param("userid","abc123a")
-                .param("passwd","")
-                .param("name","")
-                .param("email","abc123a")
-                .param("zipcode","")
-                .param("addr1","")
-                .param("addr2","")
-                .param("phone",""))
+                        .param("userid","abc123a")
+                        .param("passwd","")
+                        .param("name","")
+                        .param("email","abc123a")
+                        .param("zipcode","")
+                        .param("addr1","")
+                        .param("addr2","")
+                        .param("phone","") )
+                .andExpect(status().is3xxRedirection())
+                .andDo(print());
+    }
+
+    @Test
+    @DisplayName("MemberController login Test")
+    void login() throws Exception {
+        mvc.perform(post("/join/login")
+                        .param("userid","abc123")
+                        .param("passwd","987xyz") )
                 .andExpect(status().is3xxRedirection())
                 .andDo(print());
     }

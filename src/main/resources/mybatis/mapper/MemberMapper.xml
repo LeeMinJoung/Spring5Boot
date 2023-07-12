@@ -5,9 +5,9 @@
 <mapper namespace="ming.hello.boot.spring5boot.mybatis.MemberMapper">
     <insert id="insertMember" parameterType="Member">
         insert into member2
-            (userid, passwd, name, email, zipcode, addr1, addr2, phone)
-        values(#{userid},#{passwd},#{name},#{email},#{zipcode},
-               #{addr1},#{addr2},#{phone})
+            (userid, passwd, name, jumin, email, zipcode, addr1, addr2, phone)
+        values (#{userid},#{passwd},#{name},#{jumin},#{email},
+                #{zipcode},#{addr1},#{addr2},#{phone})
     </insert>
 
     <select id="selectMember" resultType="Member">
@@ -20,6 +20,11 @@
 
     <select id="selectOneUserid" resultType="Integer">
         select count(userid) cnt from member2 where userid = #{uid}
+    </select>
+
+    <select id="selectOneMember" resultType="Member">
+        select userid, name, email, regdate from member2
+        where userid = #{userid} and passwd = #{passwd}
     </select>
 
 </mapper>

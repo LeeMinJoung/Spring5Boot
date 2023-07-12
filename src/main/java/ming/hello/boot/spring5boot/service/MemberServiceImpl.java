@@ -30,7 +30,8 @@ public class MemberServiceImpl implements MemberService {
         return mdao.selectMember();
     }
 
-// 우편번호 검색
+
+    // 우편번호 검색
     // 조회결과 출력방법 1 : csv (쉼표로 구분)
     // 서울, 강남구, 논현동, 123번지
 
@@ -57,9 +58,9 @@ public class MemberServiceImpl implements MemberService {
     public String findzip(String dong) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         String json = "";
-        dong = dong + '%';  // 부분검색 가능하도록 재조정
+        dong = dong + '%';   // 부분검색 가능하도록 재조정
 
-        json = mapper.writeValueAsString(mdao.selectzip(dong));
+        json = mapper.writeValueAsString( mdao.selectzip(dong) );
 
         return json;
     }
@@ -68,4 +69,10 @@ public class MemberServiceImpl implements MemberService {
     public int checkuid(String uid) {
         return mdao.selectOneUserid(uid);
     }
+
+    @Override
+    public Member readOneMember(Member m) {
+        return mdao.selectOneMember(m);
+    }
+
 }

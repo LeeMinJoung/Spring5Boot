@@ -15,22 +15,18 @@ public class MemberDAOImpl implements MemberDAO{
 
     // mybatis를 사용하기 위해 필요한 객체 DI
     // 단, 생성자 주입 방식 사용!
-    @Autowired
     final MemberMapper memberMapper;
 
     @Override
     public int insertMember(Member m) {
 
-        // insert(insert관련맵핑, 매개변수)
-        // sqlSession.insert("insertMember", m)로 사용하는 방식보다는 편리
+        // sqlSession.insert("insertMember", m) 로 사용하는 방식보다는 편리
         // return sqlSession.insert("MemberMapper.insertMember", m);
         return memberMapper.insertMember(m);
-
     }
 
     @Override
     public List<Member> selectMember() {
-
         return memberMapper.selectMember();
     }
 
@@ -43,5 +39,10 @@ public class MemberDAOImpl implements MemberDAO{
     @Override
     public int selectOneUserid(String uid) {
         return memberMapper.selectOneUserid(uid);
+    }
+
+    @Override
+    public Member selectOneMember(Member m) {
+        return memberMapper.selectOneMember(m);
     }
 }

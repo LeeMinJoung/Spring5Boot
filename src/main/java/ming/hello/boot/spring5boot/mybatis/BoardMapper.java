@@ -15,4 +15,6 @@ public interface BoardMapper {
 
     int updateViewBoard(String bno);
 
+    int selectCountBoard();
+
 }

@@ -46,7 +46,7 @@ public class BoardServiceImpl implements BoardService {
     public List<Board> readFindBoard(Integer cpg, String ftype, String fkey) {
         Map<String, Object> params = new HashMap<>();
         params.put("findtype", ftype);
-        params.put("finkey", fkey);
+        params.put("findkey", fkey);
         params.put("stnum", (cpg - 1) * 25);
 
         return bdao.selectFindBoard(params);

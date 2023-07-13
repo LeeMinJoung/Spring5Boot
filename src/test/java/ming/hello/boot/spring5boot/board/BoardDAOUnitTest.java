@@ -72,7 +72,7 @@ public class BoardDAOUnitTest {
     void findBoard() {
         Map<String, Object> params = new HashMap<>();
         params.put("findtype", "titcont");
-        params.put("finkey", "의료");
+        params.put("findkey", "의료");
         params.put("stnum", 0);
 
         List<Board> results = bdao.selectFindBoard(params);

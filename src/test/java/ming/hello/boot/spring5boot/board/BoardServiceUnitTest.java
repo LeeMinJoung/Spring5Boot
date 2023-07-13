@@ -57,4 +57,11 @@ public class BoardServiceUnitTest {
         assertEquals(result, true);
     }
 
+    @Test
+    @DisplayName("BoardService countPage Test")
+    void countPage() {
+        int result = bsrv.countBoard();
+
+        assertNotNull(result);
+    }
 }

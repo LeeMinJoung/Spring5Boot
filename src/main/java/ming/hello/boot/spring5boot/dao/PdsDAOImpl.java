@@ -1,6 +1,7 @@
 package ming.hello.boot.spring5boot.dao;
 
 import ming.hello.boot.spring5boot.model.Pds;
+import ming.hello.boot.spring5boot.model.PdsAttach;
 import ming.hello.boot.spring5boot.mybatis.PdsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,6 +19,12 @@ public class PdsDAOImpl implements PdsDAO{
             cnt = pdsMapper.lastPdsPno();
 
         return cnt;
+    }
+
+    @Override
+    public int insertPdsAttach(PdsAttach pa) {
+
+        return pdsMapper.insertPdsAttach(pa);
     }
 
 }

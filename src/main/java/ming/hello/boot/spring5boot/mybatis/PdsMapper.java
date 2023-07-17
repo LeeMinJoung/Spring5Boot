@@ -4,6 +4,8 @@ import ming.hello.boot.spring5boot.model.Pds;
 import ming.hello.boot.spring5boot.model.PdsAttach;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface PdsMapper {
 
@@ -13,14 +15,16 @@ public interface PdsMapper {
 
     int insertPdsAttach(PdsAttach pa);
 
-    /*
     List<Pds> selectPds(int stnum);
 
-    Pds selectOnePds(String bno);
-
-    int updateViewPds(String bno);
+    Pds selectOnePds(String pno);
 
     int selectCountPds();
+
+
+
+    /*
+    int updateViewPds(String bno);
 
     List<Pds> selectFindPds(Map<String, Object> params);
 

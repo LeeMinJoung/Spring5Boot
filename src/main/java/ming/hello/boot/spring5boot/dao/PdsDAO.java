@@ -2,6 +2,7 @@ package ming.hello.boot.spring5boot.dao;
 
 import ming.hello.boot.spring5boot.model.Pds;
 import ming.hello.boot.spring5boot.model.PdsAttach;
+import ming.hello.boot.spring5boot.model.PdsComment;
 
 import java.util.List;
 
@@ -16,4 +17,12 @@ public interface PdsDAO {
     int selectCountPds();
 
     Pds selectOnePds(String pno);
+
+    PdsAttach selectOnePdsAttach(String pno);
+
+    int insertPdsComment(PdsComment pc);
+
+    List<PdsComment> selectPdsComment(String pno);
+
+    int insertPdsReply(PdsComment pc);
 }
